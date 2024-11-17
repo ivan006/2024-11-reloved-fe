@@ -50,7 +50,61 @@ const routes = [
               breadcrumbParentName: '/lists/users',
               requiresAuth: false,
             },
-          }
+          },
+          {
+            path: '/lists/product-brands',
+            name: '/lists/product-brands',
+            component: () => import('src/controllers/lists/product-brands/ProductBrandListController.vue'),
+            meta: {
+              breadcrumbName: 'ProductBrands',
+              breadcrumbParentName: '',
+            },
+          },
+          {
+            path: '/lists/product-brands/:rId/:rName',
+            name: '/lists/product-brands/:rId/:rName',
+            component: () => import('src/controllers/lists/product-brands/ProductBrandReadController.vue'),
+            meta: {
+              breadcrumbName: ':rName',
+              breadcrumbParentName: '/lists/product-brands',
+            },
+          },
+          {
+            path: '/lists/product-categories',
+            name: '/lists/product-categories',
+            component: () => import('src/controllers/lists/product-categories/ProductCategoryListController.vue'),
+            meta: {
+              breadcrumbName: 'ProductCategories',
+              breadcrumbParentName: '',
+            },
+          },
+          {
+            path: '/lists/product-categories/:rId/:rName',
+            name: '/lists/product-categories/:rId/:rName',
+            component: () => import('src/controllers/lists/product-categories/ProductCategoryReadController.vue'),
+            meta: {
+              breadcrumbName: ':rName',
+              breadcrumbParentName: '/lists/product-categories',
+            },
+          },
+          {
+            path: '/lists/products',
+            name: '/lists/products',
+            component: () => import('src/controllers/lists/products/ProductListController.vue'),
+            meta: {
+              breadcrumbName: 'Products',
+              breadcrumbParentName: '',
+            },
+          },
+          {
+            path: '/lists/products/:rId/:rName',
+            name: '/lists/products/:rId/:rName',
+            component: () => import('src/controllers/lists/products/ProductReadController.vue'),
+            meta: {
+              breadcrumbName: ':rName',
+              breadcrumbParentName: '/lists/products',
+            },
+          },
         ],
         meta: { requiresAuth: false }
       }

@@ -7,7 +7,7 @@ export default class Product extends MyBaseModel {
   static entity = 'product';
   static entityUrl = '/api/products';
   static primaryKey = 'id';
-  static titleKey = 'id';
+  static titleKey = 'title';
   static entityHumanName = 'Product';
 
   static openRecord(pVal, item, router) {
@@ -73,14 +73,14 @@ export default class Product extends MyBaseModel {
   static fields() {
     return {
       'id': this.attr('').nullable(),
-      'title': this.attr('').nullable(),
+      'title': this.attr(''),
       'description': this.attr('').nullable(),
-      'price': this.attr('').nullable(),
-      'seller_id': this.attr('').nullable(),
+      'price': this.attr(''),
+      'seller_id': this.attr(''),
       'buyer_id': this.attr('').nullable(),
       'category_id': this.attr('').nullable(),
       'brand_id': this.attr('').nullable(),
-      'status': this.attr('').nullable(),
+      'status': this.attr(''),
       'created_at': this.attr('').nullable(),
       'updated_at': this.attr('').nullable(),
       'brand': this.belongsTo(ProductBrand, 'brand_id'),

@@ -5,7 +5,7 @@ export default class ProductCategory extends MyBaseModel {
   static entity = 'productcategory';
   static entityUrl = '/api/product-categories';
   static primaryKey = 'id';
-  static titleKey = 'id';
+  static titleKey = 'name';
   static entityHumanName = 'ProductCategory';
 
   static openRecord(pVal, item, router) {
@@ -44,8 +44,8 @@ export default class ProductCategory extends MyBaseModel {
   static fields() {
     return {
       'id': this.attr('').nullable(),
-      'name': this.attr('').nullable(),
-      'slug': this.attr('').nullable(),
+      'name': this.attr(''),
+      'slug': this.attr(''),
       'created_at': this.attr('').nullable(),
       'updated_at': this.attr('').nullable(),
       'products': this.hasMany(Product, 'category_id')

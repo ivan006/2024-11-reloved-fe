@@ -61,7 +61,20 @@ const session = computed(() => {
 const linksList = computed(() => {
 
   const linksList = [
-    ///
+
+
+    {
+      title: 'Product Brands',
+      route: '/lists/product-brands',
+    },
+    {
+      title: 'Product Categories',
+      route: '/lists/product-categories',
+    },
+    {
+      title: 'Products',
+      route: '/lists/products',
+    },
   ];
 
 

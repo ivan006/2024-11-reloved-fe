@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { SuperTable } from 'quicklists-vue-orm-ui'
+import { SuperTable } from 'wizweb-fe'
 import Product from 'src/models/orm-api/Product'
 
 export default {

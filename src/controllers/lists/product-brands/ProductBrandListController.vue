@@ -1,12 +1,10 @@
 <template>
 
     <div>
-        <q-card class="">
-            <productBrandList
-                :parentKeyValuePair="parentKeyValuePair"
-                :fetchFlags="fetchFlags"
-            />
-        </q-card>
+      <productBrandList
+        :parentKeyValuePair="parentKeyValuePair"
+        :fetchFlags="fetchFlags"
+      />
     </div>
 </template>
 
