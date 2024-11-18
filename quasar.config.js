@@ -33,9 +33,11 @@ export default configure(function () {
       extendViteConf(viteConf) {
         viteConf.optimizeDeps = viteConf.optimizeDeps || {};
         viteConf.optimizeDeps.include = viteConf.optimizeDeps.include || [];
+        viteConf.optimizeDeps.include.push("dayjs"); // Add dayjs for pre-bundling
 
         viteConf.resolve = viteConf.resolve || {};
         viteConf.resolve.alias = viteConf.resolve.alias || {};
+        viteConf.resolve.alias["dayjs"] = "dayjs"; // Ensure it resolves to the correct package
 
         viteConf.build = viteConf.build || {};
         viteConf.build.rollupOptions = viteConf.build.rollupOptions || {};
