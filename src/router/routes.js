@@ -51,40 +51,59 @@ const routes = [
               requiresAuth: false,
             },
           },
+
           {
-            path: '/lists/product-brands',
-            name: '/lists/product-brands',
-            component: () => import('src/controllers/lists/product-brands/ProductBrandListController.vue'),
+            path: '/lists/brands',
+            name: '/lists/brands',
+            component: () => import('src/controllers/lists/brands/BrandListController.vue'),
             meta: {
-              breadcrumbName: 'ProductBrands',
+              breadcrumbName: 'Brands',
               breadcrumbParentName: '',
             },
           },
           {
-            path: '/lists/product-brands/:rId/:rName',
-            name: '/lists/product-brands/:rId/:rName',
-            component: () => import('src/controllers/lists/product-brands/ProductBrandReadController.vue'),
+            path: '/lists/brands/:rId/:rName',
+            name: '/lists/brands/:rId/:rName',
+            component: () => import('src/controllers/lists/brands/BrandReadController.vue'),
             meta: {
               breadcrumbName: ':rName',
-              breadcrumbParentName: '/lists/product-brands',
+              breadcrumbParentName: '/lists/brands',
             },
           },
           {
-            path: '/lists/product-categories',
-            name: '/lists/product-categories',
-            component: () => import('src/controllers/lists/product-categories/ProductCategoryListController.vue'),
+            path: '/lists/categories',
+            name: '/lists/categories',
+            component: () => import('src/controllers/lists/categories/CategoryListController.vue'),
             meta: {
-              breadcrumbName: 'ProductCategories',
+              breadcrumbName: 'Categories',
               breadcrumbParentName: '',
             },
           },
           {
-            path: '/lists/product-categories/:rId/:rName',
-            name: '/lists/product-categories/:rId/:rName',
-            component: () => import('src/controllers/lists/product-categories/ProductCategoryReadController.vue'),
+            path: '/lists/categories/:rId/:rName',
+            name: '/lists/categories/:rId/:rName',
+            component: () => import('src/controllers/lists/categories/CategoryReadController.vue'),
             meta: {
               breadcrumbName: ':rName',
-              breadcrumbParentName: '/lists/product-categories',
+              breadcrumbParentName: '/lists/categories',
+            },
+          },
+          {
+            path: '/lists/genders',
+            name: '/lists/genders',
+            component: () => import('src/controllers/lists/genders/GenderListController.vue'),
+            meta: {
+              breadcrumbName: 'Genders',
+              breadcrumbParentName: '',
+            },
+          },
+          {
+            path: '/lists/genders/:rId/:rName',
+            name: '/lists/genders/:rId/:rName',
+            component: () => import('src/controllers/lists/genders/GenderReadController.vue'),
+            meta: {
+              breadcrumbName: ':rName',
+              breadcrumbParentName: '/lists/genders',
             },
           },
           {

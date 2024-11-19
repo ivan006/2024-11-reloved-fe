@@ -62,14 +62,17 @@ const linksList = computed(() => {
 
   const linksList = [
 
-
     {
-      title: 'Product Brands',
-      route: '/lists/product-brands',
+      title: 'Brands',
+      route: '/lists/brands',
     },
     {
-      title: 'Product Categories',
-      route: '/lists/product-categories',
+      title: 'Categories',
+      route: '/lists/categories',
+    },
+    {
+      title: 'Genders',
+      route: '/lists/genders',
     },
     {
       title: 'Products',

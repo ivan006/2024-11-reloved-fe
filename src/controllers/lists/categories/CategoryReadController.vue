@@ -2,18 +2,18 @@
 
     <div>
         <q-card class="q-mb-md">
-            <productCategoryRead :id="id" />
+            <categoryRead :id="id" />
         </q-card>
     </div>
 </template>
 
 <script>
-import productCategoryRead from 'src/views/lists/product-categories/ProductCategoryRead.vue'
+import categoryRead from 'src/views/lists/categories/CategoryRead.vue'
 
 export default {
-    name: 'ProductCategory-read-controller',
+    name: 'Category-read-controller',
     components: {
-        productCategoryRead,
+        categoryRead,
     },
 
     data() {

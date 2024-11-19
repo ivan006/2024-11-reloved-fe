@@ -10,14 +10,14 @@
 
 <script>
 import { SuperRecord } from 'wizweb-fe'
-import Product from 'src/models/orm-api/Product'
+import Gender from 'src/models/orm-api/Gender'
 
 export default {
-    name: 'Product-read',
+    name: 'Gender-read',
     components: { SuperRecord },
     computed: {
         superRecordModel() {
-            return Product
+            return Gender
         },
     },
 }

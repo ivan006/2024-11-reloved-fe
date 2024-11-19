@@ -10,14 +10,14 @@
 
 <script>
 import { SuperRecord } from 'wizweb-fe'
-import ProductCategory from 'src/models/orm-api/ProductCategory'
+import Brand from 'src/models/orm-api/Brand'
 
 export default {
-    name: 'ProductCategory-read',
+    name: 'Brand-read',
     components: { SuperRecord },
     computed: {
         superRecordModel() {
-            return ProductCategory
+            return Brand
         },
     },
 }

@@ -1,7 +1,7 @@
 <template>
 
     <div>
-        <productList
+        <brandList
             :parentKeyValuePair="parentKeyValuePair"
             :fetchFlags="fetchFlags"
         />
@@ -9,12 +9,12 @@
 </template>
 
 <script>
-import productList from 'src/views/lists/products/ProductList.vue'
+import brandList from 'src/views/lists/brands/BrandList.vue'
 
 export default {
-    name: 'Product-list-controller',
+    name: 'Brand-list-controller',
     components: {
-        productList,
+        brandList,
     },
 
     data() {

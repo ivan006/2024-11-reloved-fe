@@ -1,18 +1,15 @@
 import MyBaseModel from 'src/models/helpers/MyBaseModel';
-import Brand from 'src/models/orm-api/Brand';
-import User from 'src/models/User';
-import Category from 'src/models/orm-api/Category';
-import Gender from 'src/models/orm-api/Gender';
+import Product from 'src/models/orm-api/Product';
 
-export default class Product extends MyBaseModel {
-    static entity = 'product';
-    static entityUrl = '/api/products';
+export default class Category extends MyBaseModel {
+    static entity = 'category';
+    static entityUrl = '/api/categories';
     static primaryKey = 'id';
     static titleKey = 'name';
-    static entityHumanName = 'Product';
+    static entityHumanName = 'Category';
     static openRecord(pVal, item, router){
       router.push({
-        name: '/lists/products/:rId/:rName',
+        name: '/lists/categories/:rId/:rName',
         params: {
           rId: pVal,
           rName: pVal,
@@ -21,11 +18,7 @@ export default class Product extends MyBaseModel {
     }
 
     static parentWithables = [
-        'brand',
-        'gender',
-        'category',
-        'seller',
-        'buyer'
+
     ];
 
     static rules = {
@@ -44,39 +37,17 @@ export default class Product extends MyBaseModel {
     static fieldsMetadata = {
         'id': {},
             'name': {},
-            'description': {},
-            'price': {},
-            'image': {},
-            'purchase_date': {},
             'created_at': {},
-            'updated_at': {},
-            'brand_id': { linkablesRule: () => { return {} } },
-            'gender_id': { linkablesRule: () => { return {} } },
-            'category_id': { linkablesRule: () => { return {} } },
-            'seller_id': { linkablesRule: () => { return {} } },
-            'buyer_id': { linkablesRule: () => { return {} } }
+            'updated_at': {}
     };
 
     static fields() {
         return {
             'id': this.attr('').nullable(),
             'name': this.attr(''),
-            'description': this.attr('').nullable(),
-            'price': this.attr(''),
-            'image': this.attr('').nullable(),
-            'purchase_date': this.attr(''),
             'created_at': this.attr('').nullable(),
             'updated_at': this.attr('').nullable(),
-            'brand_id': this.attr(''),
-            'gender_id': this.attr(''),
-            'category_id': this.attr(''),
-            'seller_id': this.attr(''),
-            'buyer_id': this.attr(''),
-            'brand': this.belongsTo(Brand, 'brand_id'),
-            'buyer': this.belongsTo(User, 'buyer_id'),
-            'category': this.belongsTo(Category, 'category_id'),
-            'gender': this.belongsTo(Gender, 'gender_id'),
-            'seller': this.belongsTo(User, 'seller_id')
+            'products': this.hasMany(Product, 'category_id')
         };
     }
 

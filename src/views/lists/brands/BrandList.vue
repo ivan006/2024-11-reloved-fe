@@ -12,10 +12,10 @@
 
 <script>
 import { SuperTable } from 'wizweb-fe'
-import Product from 'src/models/orm-api/Product'
+import Brand from 'src/models/orm-api/Brand'
 
 export default {
-    name: 'Product-list',
+    name: 'Brand-list',
     components: {
         SuperTable,
     },
@@ -39,13 +39,13 @@ export default {
 
     computed: {
         superTableModel() {
-            return Product
+            return Brand
         },
     },
     methods: {
         openRecord(pVal, item, router) {
             router.push({
-                name: '/lists/products/:rId/:rName',
+                name: '/lists/brands/:rId/:rName',
                 params: {
                     rId: pVal,
                     rName: pVal,
