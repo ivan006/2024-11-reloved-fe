@@ -116,6 +116,15 @@ const routes = [
             },
           },
           {
+            path: '/lists/products/filter/:filterParams*',
+            name: '/lists/products/filter/:filterParams*',
+            component: () => import('src/controllers/lists/products/ProductListController.vue'),
+            meta: {
+              breadcrumbName: 'Products',
+              breadcrumbParentName: '',
+            },
+          },
+          {
             path: '/lists/products/:rId/:rName',
             name: '/lists/products/:rId/:rName',
             component: () => import('src/controllers/lists/products/ProductReadController.vue'),
