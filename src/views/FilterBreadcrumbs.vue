@@ -8,10 +8,11 @@
         class="cursor-pointer"
       />
     </q-breadcrumbs>
-    <!--<pre>{{ filters }}</pre>-->
+    <!--<pre>{{ filterVals }}</pre>-->
     <!--<pre>{{ filterNames }}</pre>-->
     <!--<pre>{{ filterParams }}</pre>-->
-    <!--<pre>{{ urlParamName }}</pre>-->
+    <!--<pre>{{ boundUrlParamName }}</pre>-->
+    <!--<pre>{{ breadcrumbTrail }}</pre>-->
   </div>
 </template>
 <script>
@@ -19,13 +20,13 @@
 export default {
   name: "FilterBreadcrumbs",
   props: {
-    urlParamName: {
+    boundUrlParamName: {
       type: String,
       default: () => {
         return ""
       }
     },
-    filters: {
+    filterVals: {
       type: Object,
       default: () => {
         return {}
@@ -35,6 +36,12 @@ export default {
       type: Object,
       default: () => {
         return {}
+      }
+    },
+    trailPrefix: {
+      type: Array,
+      default: () => {
+        return []
       }
     },
   },
@@ -49,7 +56,7 @@ export default {
 
 
     breadcrumbTrail() {
-      const trail = [];
+      const trail = this.trailPrefix;
 
       for (let i = 0; i < this.filterParams.length; i += 3) {
         const key = this.filterParams[i];
@@ -68,7 +75,7 @@ export default {
   },
 
   methods: {
-    // Decode filterParams (array) to populate filters and filterNames
+    // Decode filterParams (array) to populate filterVals and filterNames
     filterParamsDecode(filterParams) {
       const newFilters = {};
       const newfilterNames = {};
@@ -91,7 +98,7 @@ export default {
 
       // Build params and track the last non-default filter set
       Object.keys(this.filterNames).forEach((key, index) => {
-        const id = this.filters[key] !== null ? this.filters[key] : 0;
+        const id = this.filterVals[key] !== null ? this.filterVals[key] : 0;
         const name = this.filterNames[key] !== null ? this.filterNames[key] : "All";
 
         params.push(key, id, name);
@@ -118,14 +125,14 @@ export default {
         name: this.$route.name, // Stay on the current route
         params: {
           ...this.$route.params, // Keep existing params
-          [this.urlParamName]: this.filterParams, // Dynamically set the parameter name
+          [this.boundUrlParamName]: this.filterParams, // Dynamically set the parameter name
         },
       });
     },
   },
   watch: {
-    // Watch filters and filterNames for changes
-    filters: {
+    // Watch filterVals and filterNames for changes
+    filterVals: {
       deep: true,
       handler() {
         this.updateRoute();
@@ -140,11 +147,11 @@ export default {
   },
   mounted() {
     // On page load, decode filterParams from route
-    const initialFilterParams = this.$route.params[this.urlParamName] || [];
+    const initialFilterParams = this.$route.params[this.boundUrlParamName] || [];
     if (initialFilterParams.length) {
       const filterParamsDecode = this.filterParamsDecode(initialFilterParams);
 
-      this.$emit('update:filters', filterParamsDecode.newFilters)
+      this.$emit('update:filterVals', filterParamsDecode.newFilters)
       this.$emit('update:filterNames', filterParamsDecode.newfilterNames)
       // console.log('filterParams1')
       // console.log(this.filterParams)

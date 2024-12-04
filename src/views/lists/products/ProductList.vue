@@ -7,8 +7,8 @@
         :parentKeyValuePair="parentKeyValuePair"
         :fetchFlags="fetchFlags"
         :noBorder="noBorder"
-        :filtersProp="filters"
-        @update:filtersProp="(newVal)=>{$emit('update:filters', newVal)}"
+        :filterVals="filterVals"
+        @update:filterVals="(newVal)=>{$emit('update:filterVals', newVal)}"
         :filterNames="filterNames"
         @update:filterNames="(newVal)=>{$emit('update:filterNames', newVal)}"
     />
@@ -25,7 +25,7 @@ export default {
     },
 
     props: {
-        filters: {
+        filterVals: {
           type: Object,
           default: () => {
             return {}

@@ -1,17 +1,28 @@
 <template>
   <div>
     <FilterBreadcrumbs
-      urlParamName="filterParams"
-      v-model:filters="filters"
+      boundUrlParamName="filterParams"
+      v-model:filterVals="filterVals"
       v-model:filterNames="filterNames"
+      :trailPrefix='[
+        {
+        "label": "Home"
+        },
+        {
+        "label": "Products"
+        },
+        {
+        "label": "Filters"
+        }
+      ]'
     />
     <productList
       :parentKeyValuePair="parentKeyValuePair"
       :fetchFlags="fetchFlags"
-      v-model:filters="filters"
+      v-model:filterVals="filterVals"
       v-model:filterNames="filterNames"
     />
-    <!--<pre>{{filters}}</pre>-->
+    <!--<pre>{{filterVals}}</pre>-->
     <!--<pre>{{filterNames}}</pre>-->
   </div>
 </template>
@@ -30,7 +41,7 @@ export default {
     return {
       parentKeyValuePair: {},
       fetchFlags: {},
-      filters: {}, // Stores filter IDs
+      filterVals: {}, // Stores filter IDs
       filterNames: {}, // Stores filter names
     };
   },
