@@ -9,7 +9,7 @@
       />
     </q-breadcrumbs>
     <!--<pre>{{ filters }}</pre>-->
-    <!--<pre>{{ filterLookupNames }}</pre>-->
+    <!--<pre>{{ filterNames }}</pre>-->
     <!--<pre>{{ filterParams }}</pre>-->
     <!--<pre>{{ urlParamName }}</pre>-->
   </div>
@@ -31,7 +31,7 @@ export default {
         return {}
       }
     },
-    filterLookupNames: {
+    filterNames: {
       type: Object,
       default: () => {
         return {}
@@ -68,31 +68,31 @@ export default {
   },
 
   methods: {
-    // Decode filterParams (array) to populate filters and filterLookupNames
+    // Decode filterParams (array) to populate filters and filterNames
     filterParamsDecode(filterParams) {
       const newFilters = {};
-      const newFilterLookupNames = {};
+      const newfilterNames = {};
 
       for (let i = 0; i < filterParams.length; i += 3) {
         const key = filterParams[i];
         newFilters[key] = parseInt(filterParams[i + 1], 10) || 0;
-        newFilterLookupNames[key] = filterParams[i + 2] || "All";
+        newfilterNames[key] = filterParams[i + 2] || "All";
       }
 
       return {
         newFilters,
-        newFilterLookupNames
+        newfilterNames
       }
     },
-    // Encode filters and filterLookupNames into filterParams (array)
+    // Encode filters and filterNames into filterParams (array)
     filterParamsEncode() {
       const params = [];
       let lastNonDefaultIndex = -1;
 
       // Build params and track the last non-default filter set
-      Object.keys(this.filterLookupNames).forEach((key, index) => {
+      Object.keys(this.filterNames).forEach((key, index) => {
         const id = this.filters[key] !== null ? this.filters[key] : 0;
-        const name = this.filterLookupNames[key] !== null ? this.filterLookupNames[key] : "All";
+        const name = this.filterNames[key] !== null ? this.filterNames[key] : "All";
 
         params.push(key, id, name);
 
@@ -124,14 +124,14 @@ export default {
     },
   },
   watch: {
-    // Watch filters and filterLookupNames for changes
+    // Watch filters and filterNames for changes
     filters: {
       deep: true,
       handler() {
         this.updateRoute();
       },
     },
-    // filterLookupNames: {
+    // filterNames: {
     //   deep: true,
     //   handler() {
     //     this.updateRoute();
@@ -145,7 +145,7 @@ export default {
       const filterParamsDecode = this.filterParamsDecode(initialFilterParams);
 
       this.$emit('update:filters', filterParamsDecode.newFilters)
-      this.$emit('update:filterLookupNames', filterParamsDecode.newFilterLookupNames)
+      this.$emit('update:filterNames', filterParamsDecode.newfilterNames)
       // console.log('filterParams1')
       // console.log(this.filterParams)
     }

@@ -3,16 +3,16 @@
     <FilterBreadcrumbs
       urlParamName="filterParams"
       v-model:filters="filters"
-      v-model:filterLookupNames="filterLookupNames"
+      v-model:filterNames="filterNames"
     />
     <productList
       :parentKeyValuePair="parentKeyValuePair"
       :fetchFlags="fetchFlags"
       v-model:filters="filters"
-      v-model:filterLookupNames="filterLookupNames"
+      v-model:filterNames="filterNames"
     />
     <!--<pre>{{filters}}</pre>-->
-    <!--<pre>{{filterLookupNames}}</pre>-->
+    <!--<pre>{{filterNames}}</pre>-->
   </div>
 </template>
 
@@ -31,7 +31,7 @@ export default {
       parentKeyValuePair: {},
       fetchFlags: {},
       filters: {}, // Stores filter IDs
-      filterLookupNames: {}, // Stores filter names
+      filterNames: {}, // Stores filter names
     };
   },
 };

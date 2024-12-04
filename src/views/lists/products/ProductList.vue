@@ -9,8 +9,8 @@
         :noBorder="noBorder"
         :filtersProp="filters"
         @update:filtersProp="(newVal)=>{$emit('update:filters', newVal)}"
-        :filterLookupNames="filterLookupNames"
-        @update:filterLookupNames="(newVal)=>{$emit('update:filterLookupNames', newVal)}"
+        :filterNames="filterNames"
+        @update:filterNames="(newVal)=>{$emit('update:filterNames', newVal)}"
     />
 </template>
 
@@ -31,7 +31,7 @@ export default {
             return {}
           }
         },
-        filterLookupNames: {
+        filterNames: {
           type: Object,
           default: () => {
             return {}
