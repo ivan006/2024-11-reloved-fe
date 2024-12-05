@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <q-breadcrumbs class="q-mt-md">
+  <div class="q-mb-md">
+    <q-breadcrumbs class="">
       <!-- Add Home breadcrumb -->
       <q-breadcrumbs-el
         class="text-subtitle2"

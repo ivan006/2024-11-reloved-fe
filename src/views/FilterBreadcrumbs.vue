@@ -1,17 +1,17 @@
 <template>
   <div>
-    <q-breadcrumbs  class="q-px-md q-py-sm">
+    <q-breadcrumbs  class="q-mt-md">
       <q-breadcrumbs-el
         v-for="(crumb, index) in breadcrumbTrail"
         :key="index"
         :label="crumb.label"
-        class="cursor-pointer"
+        class="text-subtitle2"
       />
     </q-breadcrumbs>
     <!--<pre>{{ filterVals }}</pre>-->
     <!--<pre>{{ filterNames }}</pre>-->
     <!--<pre>{{ filterParams }}</pre>-->
-    <!--<pre>{{ boundUrlParamName }}</pre>-->
+    <!--<pre>{{ boundRouteParam }}</pre>-->
     <!--<pre>{{ breadcrumbTrail }}</pre>-->
   </div>
 </template>
@@ -20,7 +20,13 @@
 export default {
   name: "FilterBreadcrumbs",
   props: {
-    boundUrlParamName: {
+    boundRoute: {
+      type: String,
+      default: () => {
+        return ""
+      }
+    },
+    boundRouteParam: {
       type: String,
       default: () => {
         return ""
@@ -65,7 +71,7 @@ export default {
 
         // Create separate breadcrumb objects for key and value
         trail.push(
-          { label: key }, // Filter key as a separate breadcrumb
+          { label: this.formatKey(key) }, // Filter key as a separate breadcrumb
           { label: name } // Merged value (only the name) as a separate breadcrumb
         );
       }
@@ -75,6 +81,18 @@ export default {
   },
 
   methods: {
+    formatKey(key) {
+      // Remove "_id" from the end if it exists
+      let formattedKey = key.endsWith("_id") ? key.slice(0, -3) : key;
+
+      // Convert snake_case to Title Case
+      formattedKey = formattedKey
+        .split("_")
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+        .join(" ");
+
+      return formattedKey;
+    },
     // Decode filterParams (array) to populate filterVals and filterNames
     filterParamsDecode(filterParams) {
       const newFilters = {};
@@ -122,10 +140,10 @@ export default {
     updateRoute() {
       this.filterParams = this.filterParamsEncode();
       this.$router.push({
-        name: this.$route.name, // Stay on the current route
+        name: this.boundRoute, // Stay on the current route
         params: {
           ...this.$route.params, // Keep existing params
-          [this.boundUrlParamName]: this.filterParams, // Dynamically set the parameter name
+          [this.boundRouteParam]: this.filterParams, // Dynamically set the parameter name
         },
       });
     },
@@ -147,7 +165,7 @@ export default {
   },
   mounted() {
     // On page load, decode filterParams from route
-    const initialFilterParams = this.$route.params[this.boundUrlParamName] || [];
+    const initialFilterParams = this.$route.params[this.boundRouteParam] || [];
     if (initialFilterParams.length) {
       const filterParamsDecode = this.filterParamsDecode(initialFilterParams);
 
