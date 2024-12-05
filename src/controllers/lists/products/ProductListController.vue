@@ -19,7 +19,7 @@
       ]'
     />
   </div>
-    <div class="q-mb-md">
+  <div class="q-mb-md">
     <productList
       :parentKeyValuePair="parentKeyValuePair"
       :fetchFlags="fetchFlags"
@@ -34,12 +34,10 @@
 <script>
 import productList from "src/views/lists/products/ProductList.vue";
 import { BreadcrumbsFilter } from 'wizweb-fe'
-import BreadcrumbsComp from "src/views/BreadcrumbsComp.vue";
 
 export default {
   name: "Product-list-controller",
   components: {
-    BreadcrumbsComp,
     BreadcrumbsFilter,
     productList,
   },
