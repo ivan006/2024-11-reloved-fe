@@ -1,6 +1,7 @@
 <template>
 
     <div>
+      <BreadcrumbsComp />
         <q-card class="q-mb-md">
             <categoryRead :id="id" />
         </q-card>
@@ -9,10 +10,12 @@
 
 <script>
 import categoryRead from 'src/views/lists/categories/CategoryRead.vue'
+import BreadcrumbsComp from "src/views/BreadcrumbsComp.vue";
 
 export default {
     name: 'Category-read-controller',
     components: {
+      BreadcrumbsComp,
         categoryRead,
     },
 

@@ -1,5 +1,6 @@
 <template>
     <div>
+      <BreadcrumbsComp />
       <q-card class="q-mb-md" style="overflow: hidden;">
           <userRead
             :id="+$route.params.rId"
@@ -36,10 +37,12 @@ import userRead from 'src/views/lists/users/UserRead.vue'
 import User from "src/models/User";
 import VueCookies from "vue-cookies";
 import SectionComponent from "src/views/SectionComponent.vue";
+import BreadcrumbsComp from "src/views/BreadcrumbsComp.vue";
 
 export default {
     name: 'User-read-controller',
     components: {
+      BreadcrumbsComp,
       SectionComponent,
         userRead,
     },

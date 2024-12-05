@@ -1,7 +1,9 @@
 <template>
   <div>
-    <FilterBreadcrumbs
-      boundUrlParamName="filterParams"
+
+    <BreadcrumbsFilter
+      boundRoute="/lists/products/filter/:filterParams*"
+      boundRouteParam="filterParams"
       v-model:filterVals="filterVals"
       v-model:filterNames="filterNames"
       :trailPrefix='[
@@ -12,10 +14,12 @@
         "label": "Products"
         },
         {
-        "label": "Filters"
+        "label": "Filter"
         }
       ]'
     />
+  </div>
+    <div class="q-mb-md">
     <productList
       :parentKeyValuePair="parentKeyValuePair"
       :fetchFlags="fetchFlags"
@@ -29,12 +33,14 @@
 
 <script>
 import productList from "src/views/lists/products/ProductList.vue";
-import FilterBreadcrumbs from "src/views/FilterBreadcrumbs.vue";
+import { BreadcrumbsFilter } from 'wizweb-fe'
+import BreadcrumbsComp from "src/views/BreadcrumbsComp.vue";
 
 export default {
   name: "Product-list-controller",
   components: {
-    FilterBreadcrumbs,
+    BreadcrumbsComp,
+    BreadcrumbsFilter,
     productList,
   },
   data() {
