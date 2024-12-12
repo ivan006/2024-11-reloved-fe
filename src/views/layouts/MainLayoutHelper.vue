@@ -42,7 +42,7 @@
           </q-list>
         </q-drawer>
         <div class="q-px-md">
-          <div class="q-pb-md">
+          <div class="q-pb-md q-pt-md">
             <slot name="default"></slot>
           </div>
         </div>
@@ -71,7 +71,7 @@
 
       <div class="container-md">
         <div class="q-px-md">
-          <div class="q-pb-md">
+          <div class="q-pb-md q-pt-md">
             <slot name="default"></slot>
           </div>
         </div>

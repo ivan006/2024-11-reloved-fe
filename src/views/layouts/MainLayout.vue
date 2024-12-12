@@ -23,7 +23,7 @@
       </template>
     </template>
     <template v-slot:default>
-      <q-page-container class="q-pt-md">
+      <q-page-container>
 
 
         <!--<div class="q-mb-md">-->
