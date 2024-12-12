@@ -1,5 +1,6 @@
 <template>
     <SuperTable
+      @superTableMounted="hasMounted"
         :showMap="true"
         :model="superTableModel"
         @clickRow="openRecord"
@@ -59,6 +60,9 @@ export default {
         },
     },
     methods: {
+      hasMounted(newVal){
+        this.$emit('hasMounted')
+      },
         openRecord(pVal, item, router) {
             router.push({
                 name: '/lists/products/:rId/:rName',
