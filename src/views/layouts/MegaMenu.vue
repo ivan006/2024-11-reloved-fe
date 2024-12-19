@@ -4,7 +4,6 @@
 
 <script>
 import RecursiveMenu from "./RecursiveMenu.vue";
-import { v4 as uuidv4 } from "uuid";
 
 export default {
   name: "MegaMenu",
@@ -13,56 +12,66 @@ export default {
   },
   data() {
     return {
-      genders: ["Men", "Women", "Unisex"], // Gender list
-      categories: ["Shirts", "Pants", "Shoes"], // Category list
-      brands: ["Nike", "Adidas", "Puma"], // Brand list
-      menuList: [], // Dynamically generated menu list
+      genders: [
+        { id: 1, name: "Men" },
+        { id: 2, name: "Women" },
+      ],
+      categories: [
+        { id: 1, name: "Shirts" },
+        { id: 2, name: "Pants" },
+      ],
+      brands: [
+        { id: 1, name: "Brand 1" },
+        { id: 2, name: "Brand 2" },
+      ],
     };
   },
-  created() {
-    this.generateMenuList();
-  },
-  methods: {
-    generateMenuList() {
-      this.menuList = this.genders.map((gender) => ({
-        func: gender,
-        uuid: uuidv4(),
+  computed: {
+    menuList() {
+      // Generate the menu items dynamically
+      return this.genders.map((gender) => ({
+        name: gender.name,
         children: [
           {
-            func: "All",
-            uuid: uuidv4(),
-            handler: () => this.onItemClick(gender, "All", null),
+            name: "All",
+            handler: () => this.navigateToFilters({ gender }),
           },
           ...this.categories.map((category) => ({
-            func: category,
-            uuid: uuidv4(),
+            name: category.name,
             children: [
               {
-                func: "All",
-                uuid: uuidv4(),
-                handler: () => this.onItemClick(gender, category, "All"),
+                name: "All",
+                handler: () =>
+                  this.navigateToFilters({ gender, category }),
               },
               ...this.brands.map((brand) => ({
-                func: brand,
-                uuid: uuidv4(),
-                handler: () => this.onItemClick(gender, category, brand),
+                name: brand.name,
+                handler: () =>
+                  this.navigateToFilters({ gender, category, brand }),
               })),
             ],
           })),
         ],
       }));
     },
+  },
+  methods: {
+    navigateToFilters({ gender, category, brand }) {
+      const params = [];
 
-    onItemClick(gender, category, brand) {
-      console.log(`Clicked: Gender=${gender}, Category=${category}, Brand=${brand}`);
-      // Add your custom action logic here
+      if (gender) {
+        params.push("gender_id", gender.id, gender.name);
+      }
+      if (category) {
+        params.push("category_id", category.id, category.name);
+      }
+      if (brand) {
+        params.push("brand_id", brand.id, brand.name);
+      }
+
+      const path = `/lists/products/filter/${params.join("/")}`;
+      this.$router.push(path);
     },
   },
 };
 </script>
-
-<style>
-.header-backgroud-color {
-  background-color: #1e88e5;
-}
-</style>

@@ -2,23 +2,23 @@
   <div>
     <q-btn
       v-for="main in menuList"
-      :key="main.uuid"
+      :key="main.name"
       flat
       color="grey-1"
       class="header-toolbar-title q-mx-xs"
-      :label="main.func"
-      @mouseover="mouseOverMenuEvt(main)"
-      @mouseleave="mouseLeaveMenuEvt(main)"
+      :label="main.name"
+      @mouseover="handleMouseOver(main)"
+      @mouseleave="handleMouseLeave(main)"
     >
       <q-menu
-        :ref="main.uuid"
+        v-if="main.children?.length > 0"
         content-class="bg-grey-4 text-brown-7 header-nav-title"
         transition-show="jump-down"
         transition-hide="jump-up"
       >
         <q-list>
-          <template v-for="child in main.children" :key="child.uuid">
-            <RecursiveMenuItem :node="child" @mouse-over="mouseOverMenuEvt" @mouse-leave="mouseLeaveMenuEvt" />
+          <template v-for="child in main.children" :key="child.name">
+            <RecursiveMenuItem :node="child" />
           </template>
         </q-list>
       </q-menu>
@@ -41,11 +41,11 @@ export default {
     },
   },
   methods: {
-    mouseOverMenuEvt(node) {
-      this.$emit("mouse-over", node);
+    handleMouseOver(node) {
+      // Add any logic for mouse-over events if necessary
     },
-    mouseLeaveMenuEvt(node) {
-      this.$emit("mouse-leave", node);
+    handleMouseLeave(node) {
+      // Add any logic for mouse-leave events if necessary
     },
   },
 };

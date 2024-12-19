@@ -2,17 +2,16 @@
   <q-item
     :class="{ 'q-item-active': node.children?.length > 0 }"
     clickable
-    @click="handleClick"
+    @click="!node.children?.length && node.handler ? node.handler() : null"
     @mouseover="handleMouseOver"
     @mouseleave="handleMouseLeave"
   >
-    <q-item-section>{{ node.func }}</q-item-section>
+    <q-item-section>{{ node.name }}</q-item-section>
     <q-item-section v-if="node.children?.length > 0" side>
       <q-icon name="keyboard_arrow_right" />
     </q-item-section>
     <q-menu
       v-if="node.children?.length > 0"
-      :ref="node.uuid"
       anchor="top end"
       self="top start"
       content-class="bg-grey-4 text-brown-7 header-nav-title"
@@ -20,8 +19,8 @@
       transition-hide="scale"
     >
       <q-list>
-        <template v-for="child in node.children" :key="child.uuid">
-          <RecursiveMenuItem :node="child" @mouse-over="handleMouseOver" @mouse-leave="handleMouseLeave" />
+        <template v-for="child in node.children" :key="child.name">
+          <RecursiveMenuItem :node="child" />
         </template>
       </q-list>
     </q-menu>
@@ -39,15 +38,10 @@ export default {
   },
   methods: {
     handleMouseOver() {
-      this.$emit("mouse-over", this.node);
+      // Placeholder for any mouse-over logic
     },
     handleMouseLeave() {
-      this.$emit("mouse-leave", this.node);
-    },
-    handleClick() {
-      if (!this.node.children?.length && this.node.handler) {
-        this.node.handler(); // Call the handler for leaf nodes
-      }
+      // Placeholder for any mouse-leave logic
     },
   },
 };
