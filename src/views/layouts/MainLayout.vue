@@ -62,22 +62,22 @@ const linksList = computed(() => {
 
   const linksList = [
 
-    {
-      title: 'Brands',
-      route: '/lists/brands',
-    },
-    {
-      title: 'Categories',
-      route: '/lists/categories',
-    },
-    {
-      title: 'Genders',
-      route: '/lists/genders',
-    },
-    {
-      title: 'Products',
-      route: '/lists/products',
-    },
+    // {
+    //   title: 'Brands',
+    //   route: '/lists/brands',
+    // },
+    // {
+    //   title: 'Categories',
+    //   route: '/lists/categories',
+    // },
+    // {
+    //   title: 'Genders',
+    //   route: '/lists/genders',
+    // },
+    // {
+    //   title: 'Products',
+    //   route: '/lists/products',
+    // },
   ];
 
 
