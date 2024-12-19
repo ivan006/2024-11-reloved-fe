@@ -64,8 +64,8 @@
           <q-toolbar-title>{{ siteTitle }}</q-toolbar-title>
 
           <!--<q-btn flat round dense icon="whatshot" />-->
-          <slot name="menu"></slot>
           <MegaMenu />
+          <slot name="menu"></slot>
         </div>
 
       </q-toolbar>

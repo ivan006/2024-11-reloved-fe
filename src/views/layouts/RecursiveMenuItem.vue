@@ -2,6 +2,7 @@
   <q-item
     :class="{ 'q-item-active': node.children?.length > 0 }"
     clickable
+    @click="handleClick"
     @mouseover="handleMouseOver"
     @mouseleave="handleMouseLeave"
   >
@@ -42,6 +43,11 @@ export default {
     },
     handleMouseLeave() {
       this.$emit("mouse-leave", this.node);
+    },
+    handleClick() {
+      if (!this.node.children?.length && this.node.handler) {
+        this.node.handler(); // Call the handler for leaf nodes
+      }
     },
   },
 };

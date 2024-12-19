@@ -1,7 +1,5 @@
 <template>
-  <q-toolbar-title class="row items-end">
-    <RecursiveMenu :menuList="menuList" />
-  </q-toolbar-title>
+  <RecursiveMenu :menuList="menuList" />
 </template>
 
 <script>
@@ -33,6 +31,7 @@ export default {
           {
             func: "All",
             uuid: uuidv4(),
+            handler: () => this.onItemClick(gender, "All", null),
           },
           ...this.categories.map((category) => ({
             func: category,
@@ -41,15 +40,22 @@ export default {
               {
                 func: "All",
                 uuid: uuidv4(),
+                handler: () => this.onItemClick(gender, category, "All"),
               },
               ...this.brands.map((brand) => ({
                 func: brand,
                 uuid: uuidv4(),
+                handler: () => this.onItemClick(gender, category, brand),
               })),
             ],
           })),
         ],
       }));
+    },
+
+    onItemClick(gender, category, brand) {
+      console.log(`Clicked: Gender=${gender}, Category=${category}, Brand=${brand}`);
+      // Add your custom action logic here
     },
   },
 };
