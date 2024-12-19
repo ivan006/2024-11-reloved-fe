@@ -65,6 +65,7 @@
 
           <!--<q-btn flat round dense icon="whatshot" />-->
           <slot name="menu"></slot>
+          <MegaMenu />
         </div>
 
       </q-toolbar>
@@ -136,6 +137,7 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
+import MegaMenu from "src/views/layouts/MegaMenu.vue";
 
 const isSmallScreen = ref(false);
 
