@@ -19,7 +19,7 @@
       transition-hide="scale"
     >
       <q-list>
-        <template v-for="(child, idx) in node.children" :key="child.uuid">
+        <template v-for="child in node.children" :key="child.uuid">
           <RecursiveMenuItem :node="child" @mouse-over="handleMouseOver" @mouse-leave="handleMouseLeave" />
         </template>
       </q-list>

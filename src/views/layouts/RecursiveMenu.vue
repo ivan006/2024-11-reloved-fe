@@ -1,7 +1,7 @@
 <template>
   <div>
     <q-btn
-      v-for="(main, index) in menuList"
+      v-for="main in menuList"
       :key="main.uuid"
       flat
       color="grey-1"
@@ -17,7 +17,7 @@
         transition-hide="jump-up"
       >
         <q-list>
-          <template v-for="(child, idx) in main.children" :key="child.uuid">
+          <template v-for="child in main.children" :key="child.uuid">
             <RecursiveMenuItem :node="child" @mouse-over="mouseOverMenuEvt" @mouse-leave="mouseLeaveMenuEvt" />
           </template>
         </q-list>
