@@ -72,7 +72,9 @@ export default class User extends MyBaseModel {
       'created_at': this.attr('').nullable(),
       'updated_at': this.attr('').nullable(),
       'products': this.hasMany(Product, 'buyer_id'),
-      'productsSellerId': this.hasMany(Product, 'seller_id')
+      // 'productsSellerId': this.hasMany(Product, 'seller_id'),
+      'products_buyer_id': this.hasMany(Product, 'buyer_id'),
+      'products_seller_id': this.hasMany(Product, 'seller_id')
     };
   }
 
