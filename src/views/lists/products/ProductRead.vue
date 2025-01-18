@@ -4,6 +4,11 @@
         :id="+$route.params.rId"
         :displayMapField="true"
         @initialLoadHappened="$emit('initialLoadHappened')"
+        treeMode
+        :relationships="[
+          'brand',
+          'seller.products_seller_id',
+        ]"
     >
     </SuperRecord>
 </template>
