@@ -1,11 +1,22 @@
 <template>
-    <SuperRecord
-        :model="superRecordModel"
-        :id="+$route.params.rId"
-        :displayMapField="true"
-        @initialLoadHappened="$emit('initialLoadHappened')"
-    >
-    </SuperRecord>
+    <!--<SuperRecord-->
+    <!--    :model="superRecordModel"-->
+    <!--    :id="+$route.params.rId"-->
+    <!--    :displayMapField="true"-->
+    <!--    @initialLoadHappened="$emit('initialLoadHappened')"-->
+    <!--&gt;-->
+    <!--</SuperRecord>-->
+  <SuperRecord
+    :model="superRecordModel"
+    :id="+$route.params.rId"
+    :displayMapField="true"
+    @initialLoadHappened="$emit('initialLoadHappened')"
+    treeMode
+    :relationships="[
+          'products',
+        ]"
+  >
+  </SuperRecord>
 </template>
 
 <script>
