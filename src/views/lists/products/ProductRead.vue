@@ -14,13 +14,13 @@
         ]"
     >
     </SuperRecord>
-    <SuperRecord
-        :model="superRecordModel"
-        :id="+$route.params.rId"
-        :displayMapField="true"
-        @initialLoadHappened="$emit('initialLoadHappened')"
-    >
-    </SuperRecord>
+    <!--<SuperRecord-->
+    <!--    :model="superRecordModel"-->
+    <!--    :id="+$route.params.rId"-->
+    <!--    :displayMapField="true"-->
+    <!--    @initialLoadHappened="$emit('initialLoadHappened')"-->
+    <!--&gt;-->
+    <!--</SuperRecord>-->
   </div>
 </template>
 
